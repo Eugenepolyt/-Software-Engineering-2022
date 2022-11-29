@@ -1,7 +1,6 @@
 import telebot
 from telebot import types
 from FilmFinder import FilmFinder
-from RandomFilm import RandomFilm
 from RequestManager import RequestManager
 from Translator import Translator
 
@@ -13,9 +12,7 @@ translator = Translator()
 film_finder = FilmFinder(request_manager, translator)
 
 markup = types.InlineKeyboardMarkup()
-markup.add(types.InlineKeyboardButton("Случайный фильм", callback_data="random"))
 markup.add(types.InlineKeyboardButton("Найти фильм", callback_data="search"))
-
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -31,6 +28,5 @@ def callback(call):
     if call.data == "search":
         bot.send_message(call.message.chat.id, "Введите название фильма на любом языке", parse_mode="html")
     bot.answer_callback_query(call.id)
-
 
 bot.infinity_polling()

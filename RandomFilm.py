@@ -11,12 +11,14 @@ class RandomFilm:
     def get_random_film_description(self):
 
         response = self.request_manager.get_random_film()
-        name = str(response['name'])
-        age = str(response['releaseYear'])
-        genre = str(response['genre'])
-        runtime = str(response['runtime'])
-        imdb_rating = str(response['imdbRating'])
-        overview = str(response['overview'])
+        if not response[1]:
+            return "Извините, но сервер недоступен, попробуйте позже"
+        name = str(response[0]['name'])
+        age = str(response[0]['releaseYear'])
+        genre = str(response[0]['genre'])
+        runtime = str(response[0]['runtime'])
+        imdb_rating = str(response[0]['imdbRating'])
+        overview = str(response[0]['overview'])
 
         parts_of_messages = [name, age, genre, runtime, imdb_rating, overview]
 

@@ -1,6 +1,7 @@
 import telebot
 from telebot import types
 from FilmFinder import FilmFinder
+from RandomFilm import RandomFilm
 from RequestManager import RequestManager
 from Translator import Translator
 
@@ -9,9 +10,11 @@ bot = telebot.TeleBot('5807556514:AAHc29-KzxDIn7J4Vozn0utcdS58WXGLfD4')
 welcome_message = open('WelcomeMessage.txt', 'r', encoding="utf-8").read()
 request_manager = RequestManager()
 translator = Translator()
+film_randomizer = RandomFilm(request_manager, translator)
 film_finder = FilmFinder(request_manager, translator)
 
 markup = types.InlineKeyboardMarkup()
+markup.add(types.InlineKeyboardButton("Случайный фильм", callback_data="random"))
 markup.add(types.InlineKeyboardButton("Найти фильм", callback_data="search"))
 arrayOfActiveUsers = []
 
@@ -46,6 +49,9 @@ def get_film_from_user(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback(call):
+    if call.data == "random":
+        bot.send_message(call.message.chat.id, film_randomizer.get_random_film_description(), parse_mode="html")
+        bot.send_message(call.message.chat.id, 'Что будем смотреть дальше?🤔', reply_markup=markup)
     if call.data == "search":
         bot.send_message(call.message.chat.id, "Введите название фильма на любом языке", parse_mode="html")
         arrayOfActiveUsers.append(call.message.chat.id)

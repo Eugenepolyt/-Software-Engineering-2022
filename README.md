@@ -6,8 +6,13 @@
 ƒанный бот поможет вам получить статистику нужного вам фильма с imdb и поможет подобрать фильм на ночь :) 
 
 ### “естирование
-Merge в develop
+Merge в develop: 
+
 [![Test-For-Imdb-Bot](https://github.com/Eugenepolyt/-Software-Engineering-2022/actions/workflows/testing.yml/badge.svg?branch=develop&event=push)](https://github.com/Eugenepolyt/-Software-Engineering-2022/actions/runs/3665166044)
+
+Merge в master: 
+
+[![Test-For-Imdb-Bot](https://github.com/Eugenepolyt/-Software-Engineering-2022/actions/workflows/testing.yml/badge.svg?branch=master&event=push)](https://github.com/Eugenepolyt/-Software-Engineering-2022/actions/runs/3665281999)
 
 
 ###  ак запустить? ( Docker )
@@ -43,5 +48,6 @@ Merge в develop
 [![](https://yapcdn.net/se4/33/zOCbzni.png)](https://yapcdn.net/se4/33/zOCbzni.png)
 
 [![](https://yapcdn.net/se4/33/7IuMjRWM.png)](https://yapcdn.net/se4/33/7IuMjRWM.png)
+
 
 
